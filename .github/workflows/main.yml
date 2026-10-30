@@ -15,22 +15,12 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Set up Android SDK and accept licenses
-        run: |
-          mkdir -p $HOME/android-sdk/cmdline-tools
-          wget https://dl.google.com/android/repository/commandlinetools-linux-11076708_latest.zip -O cmdline-tools.zip
-          unzip -q cmdline-tools.zip -d $HOME/android-sdk/cmdline-tools
-          mv $HOME/android-sdk/cmdline-tools/cmdline-tools $HOME/android-sdk/cmdline-tools/latest
-          
-          echo "ANDROID_HOME=$HOME/android-sdk" >> $GITHUB_ENV
-          echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
-          echo "$HOME/android-sdk/platform-tools" >> $GITHUB_PATH
-          
-          # Automatické potvrzení všech licencí
-          yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
-          
-          # Instalace nástrojů s předem schválenými licencemi přes yes |
-          yes | sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+      # Oficiální akce, která automaticky a bezchybně nastaví SDK, 
+      # stáhne potřebné balíčky a potvrdí veškeré licence za vás.
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v4
+        with:
+          packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
       - name: Generate Gradle Wrapper dynamically on CI
         working-directory: BluetoothCast
