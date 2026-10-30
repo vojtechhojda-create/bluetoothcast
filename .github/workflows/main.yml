@@ -15,12 +15,14 @@ jobs:
           distribution: temurin
           java-version: 17
 
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
       - name: Generate Gradle Wrapper dynamically on CI
         working-directory: BluetoothCast
         run: |
-          # Stáhne čistou distribuci Gradle 8.9 přímo na server a vygeneruje wrapper
           wget https://services.gradle.org/distributions/gradle-8.9-bin.zip -O gradle.zip
-          unzip -q gradle.zip
+          jar xf gradle.zip
           gradle-8.9/bin/gradle wrapper --gradle-version 8.9
 
       - name: Build debug APK
