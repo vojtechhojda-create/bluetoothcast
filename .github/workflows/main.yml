@@ -20,18 +20,11 @@ jobs:
         with:
           packages: 'platform-tools platforms;android-34 build-tools;34.0.0'
 
-      - name: Generate Gradle Wrapper dynamically on CI
-        working-directory: BluetoothCast
-        run: |
-          wget https://services.gradle.org/distributions/gradle-8.9-bin.zip -O gradle.zip
-          jar xf gradle.zip
-          chmod +x gradle-8.9/bin/gradle
-          gradle-8.9/bin/gradle wrapper --gradle-version 8.9
-          chmod +x gradlew
-
       - name: Build debug APK
         working-directory: BluetoothCast
-        run: ./gradlew assembleDebug --no-daemon
+        run: |
+          chmod +x gradlew
+          ./gradlew assembleDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
