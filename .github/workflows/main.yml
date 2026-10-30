@@ -17,10 +17,6 @@ jobs:
 
       - uses: gradle/actions/setup-gradle@v4
 
-      - name: Generate Gradle Wrapper
-        working-directory: BluetoothCast
-        run: gradle wrapper --gradle-version 8.9
-
       - name: Grant execute permission for gradlew
         working-directory: BluetoothCast
         run: chmod +x gradlew
