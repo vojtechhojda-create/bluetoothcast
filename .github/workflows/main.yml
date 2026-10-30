@@ -16,12 +16,18 @@ jobs:
           java-version: 17
 
       - uses: gradle/actions/setup-gradle@v4
-        with:
-          gradle-version: 8.9
+
+      - name: Generate Gradle Wrapper
+        working-directory: BluetoothCast
+        run: gradle wrapper --gradle-version 8.9
+
+      - name: Grant execute permission for gradlew
+        working-directory: BluetoothCast
+        run: chmod +x gradlew
 
       - name: Build debug APK
         working-directory: BluetoothCast
-        run: gradle assembleDebug --no-daemon
+        run: ./gradlew assembleDebug --no-daemon
 
       - uses: actions/upload-artifact@v4
         with:
