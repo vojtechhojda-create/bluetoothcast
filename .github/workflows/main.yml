@@ -6,7 +6,7 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -15,8 +15,6 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      # Oficiální akce, která automaticky a bezchybně nastaví SDK, 
-      # stáhne potřebné balíčky a potvrdí veškeré licence za vás.
       - name: Setup Android SDK
         uses: android-actions/setup-android@v4
         with:
@@ -28,6 +26,8 @@ jobs:
           wget https://services.gradle.org/distributions/gradle-8.9-bin.zip -O gradle.zip
           jar xf gradle.zip
           gradle-8.9/bin/gradle wrapper --gradle-version 8.9
+          # Přidání práv ke spuštění pro Linuxový skript gradlew (oprava exit code 126)
+          chmod +x gradlew
 
       - name: Build debug APK
         working-directory: BluetoothCast
