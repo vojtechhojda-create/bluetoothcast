@@ -26,11 +26,11 @@ jobs:
           echo "$HOME/android-sdk/cmdline-tools/latest/bin" >> $GITHUB_PATH
           echo "$HOME/android-sdk/platform-tools" >> $GITHUB_PATH
           
-          # Automatické potvrzení všech licencí pomocí příkazu yes
+          # Automatické potvrzení všech licencí
           yes | $HOME/android-sdk/cmdline-tools/latest/bin/sdkmanager --licenses
           
-          # Instalace základních kompilačních nástrojů pro Android
-          sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
+          # Instalace nástrojů s předem schválenými licencemi přes yes |
+          yes | sdkmanager "platform-tools" "platforms;android-34" "build-tools;34.0.0"
 
       - name: Generate Gradle Wrapper dynamically on CI
         working-directory: BluetoothCast
