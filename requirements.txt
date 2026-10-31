@@ -1,4 +1,0 @@
-pyaudiowpatch
-numpy
-pystray
-pillow
