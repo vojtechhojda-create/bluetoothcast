@@ -1,0 +1,4 @@
+pyaudiowpatch
+numpy
+pystray
+pillow
