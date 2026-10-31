@@ -4,6 +4,17 @@ proxylink is a high-performance, secure local bridge connecting Windows PC and A
 
 ---
 
+## Security
+
+- **One-time QR token** — pairing token is valid only for a short time and can be used exactly once.
+- **Ed25519 device identity** — each device generates an Ed25519 key pair; trusted devices are identified by their public key.
+- **TLS for control channel** — all control communication uses secure WebSocket (`wss://`) over TLS.
+- **Whitelist approval on first pairing** — a new Android device must be explicitly approved on the Windows PC before it can connect.
+- **LAN-only default** — ProxyLink communicates only over the local Wi‑Fi/LAN network; internet access is disabled by default.
+- **“Forget device” option** — either device can remove the pairing, revoke trust, and require a new QR pairing.
+  
+---
+  
 ## v1.0 — MVP (Minimum Viable Product)
 *Goal: Establish core P2P connection, secure pairing, and basic audio/control streaming.*
 
