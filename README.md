@@ -10,7 +10,7 @@ proxylink is a high-performance, secure local bridge connecting Windows PC and A
 - [ ] **Core Networking & Discovery**
   - [ ] mDNS local discovery (`_proxylink._tcp.local.`)
   - [ ] Secure WebSocket server on Windows backend (Node.js/TypeScript)
-  - [ x ] Android client connection handling
+  - [x] Android client connection handling
 - [ ] **Secure Pairing (QR Code)**
   - [ ] QR code generation on PC with one-time pairing token
   - [ ] Android camera QR scanner & pairing request flow
