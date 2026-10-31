@@ -1,30 +1,54 @@
-# proxylink roadmap
+# proxylink
 
-brief overview of planned releases for proxylink.
+proxylink is a high-performance, secure local bridge connecting Windows PC and Android devices over Wi-Fi/LAN with ultra-low latency.
 
-## v1.0 — mvp
+---
 
-> goal: core p2p connection, qr pairing, and audio streaming.
+## v1.0 — MVP (Minimum Viable Product)
+*Goal: Establish core P2P connection, secure pairing, and basic audio/control streaming.*
 
-* [ ] networking & discovery: mdns discovery (`_proxylink._tcp.local.`), websocket server on pc (node.js), android client.
-* [ ] qr pairing: single-use token (120s), camera scanner on mobile, approval prompt in windows tray.
-* [ ] audio: wasapi loopback capture on windows, udp/websocket stream, playback via `audiotrack` on android.
-* [ ] integration: android quick settings tile, share sheet (send links/text/files), media controls.
-* [ ] ui: windows tray menu, android dashboard in jetpack compose.
+- [ ] **Core Networking & Discovery**
+  - [ ] mDNS local discovery (`_proxylink._tcp.local.`)
+  - [ ] Secure WebSocket server on Windows backend (Node.js/TypeScript)
+  - [ ] Android client connection handling
+- [ ] **Secure Pairing (QR Code)**
+  - [ ] QR code generation on PC with one-time pairing token
+  - [ ] Android camera QR scanner & pairing request flow
+  - [ ] Windows tray notification whitelist approval dialog
+- [ ] **Audio Streaming**
+  - [ ] Windows system-wide audio capture via WASAPI Loopback
+  - [ ] Real-time audio transmission and playback on Android (`AudioTrack`)
+- [ ] **Remote Control & System Integration**
+  - [ ] Media control (Play/Pause, Volume Up/Down/Mute)
+  - [ ] Android Quick Settings Tile (connection toggle & status indicator)
+  - [ ] Android Share Sheet integration (send text/links/files directly to PC)
+- [ ] **Cross-Platform UI**
+  - [ ] Windows System Tray Menu (status, QR code popup, disconnect)
+  - [ ] Android Jetpack Compose main dashboard UI
 
-## v1.1 — reliability and sharing
+---
 
-> goal: automatic reconnection and file/clipboard transfer.
+## v1.1 — Reliability & Advanced Sharing
+*Goal: Make the connection bulletproof and enhance productivity features.*
 
-* [ ] auto-pair: ed25519 key authentication for silent reconnects, tls 1.3 session encryption.
-* [ ] clipboard & files: bidirectional clipboard sync, file transfer signal protocol (`file.offer`, `file.accept`).
-* [ ] dev channel: ping/pong latency benchmarks, local test logs.
+- [ ] **Auto-Reconnect & State Recovery**
+  - [ ] Silent auto-pair on startup using stored cryptographic keys (Ed25519)
+  - [ ] Network switch and sleep/wake recovery handling
+- [ ] **Clipboard & File Bridge**
+  - [ ] Manual Clipboard sync (Send text to PC / Copy from PC)
+  - [ ] File transfer signal protocol (`file.offer`, `file.accept`, chunked transfer)
+- [ ] **Developer Test Channel**
+  - [ ] Built-in Ping/Pong latency measurement
+  - [ ] Echo test and local debug event logs
 
-## v1.2 — routing and ecosystem
+---
 
-> goal: app-specific audio routing and developer environment integration.
+## v1.2 — Ecosystem & Advanced Routing
+*Goal: App-specific audio routing and developer integrations.*
 
-* [ ] per-app audio: stream audio exclusively from selected windows applications (application loopback api).
-* [ ] bluetooth relay: android acting as a bluetooth bridge for pc hardware.
-* [ ] twocode bridge: dedicated ipc signal channel for twocode workspace integration.
-* [ ] hardware dongle: technical specs for esp32-c3/s3 usb module for offline p2p transport.
+- [ ] **Per-App Audio Routing**
+  - [ ] Application Loopback API support on Windows (stream only Spotify, Chrome, or game audio)
+- [ ] **Bluetooth Relay & Dual Output**
+  - [ ] Android acting as a Bluetooth audio bridge for PCs lacking Bluetooth hardware
+- [ ] **TwoCode Integration**
+  - [ ] Dedicated developer protocol channel for TwoCode workspace synchronization
