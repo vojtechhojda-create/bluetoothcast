@@ -149,7 +149,6 @@ Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Ar
             }
         }
     }
-}
 
 @Composable
 fun controltab(model: mainmodel) {
