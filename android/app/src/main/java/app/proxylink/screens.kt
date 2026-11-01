@@ -103,16 +103,16 @@ fun audiotab(model: mainmodel, onuplink: (String) -> Unit) {
                 AssistChip(onClick = { model.refreshapps() }, label = { Text("refresh") })
             }
           label("play on phone through")
-          Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-            FilterChip(selected = outkey.isEmpty(), onClick = { model.setoutput("") }, label = { Text("auto") })
-            for (o in outputs) {
-                FilterChip(
-                    selected = outkey == o.key,
-                    onClick = { model.setoutput(o.key) },
-                    label = { Text(o.label) }
-                )
-            }
-        }
+Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+    FilterChip(selected = outkey.isEmpty(), onClick = { model.setoutput("") }, label = { Text("auto") })
+    for ((key, label) in outputs.entries) {
+        FilterChip(
+            selected = outkey == key,
+            onClick = { model.setoutput(key) },
+            label = { Text(label) }
+        )
+    }
+}
             }
             label("buffer x${v.roundToInt()} (higher = more stable, more delay)")
             Slider(
