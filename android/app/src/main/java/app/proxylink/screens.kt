@@ -76,7 +76,7 @@ fun audiotab(model: mainmodel, onuplink: (String) -> Unit) {
     val uplink by link.uplink.collectAsState()
     val apps by link.apps.collectAsState()
     val source by model.source.collectAsState()
-    val outputs by model.outputs.collectAsState()
+    var stateValue by remember { mutableStateOf<String>("") }
     val outkey by model.outkey.collectAsState()
     val buf by model.bufmult.collectAsState()
     val err by link.error.collectAsState()
