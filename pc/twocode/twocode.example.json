@@ -1,0 +1,15 @@
+{
+  "timeoutsec": 600,
+  "workspaces": [
+    {
+      "id": "proxylink",
+      "name": "proxylink",
+      "path": "C:\\proxylink",
+      "tasks": {
+        "git status": "git status -sb",
+        "build pc": "cd pc && npm run build",
+        "pull": "git pull"
+      }
+    }
+  ]
+}
