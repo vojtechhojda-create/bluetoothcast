@@ -1,4 +1,4 @@
-package app.proxylink
+ package app.proxylink
 
 import android.os.Build
 import androidx.activity.compose.rememberLauncherForActivityResult
@@ -105,11 +105,11 @@ fun audiotab(model: mainmodel, onuplink: (String) -> Unit) {
           label("play on phone through")
 Row(Modifier.horizontalScroll(rememberScrollState()), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
     FilterChip(selected = outkey.isEmpty(), onClick = { model.setoutput("") }, label = { Text("auto") })
-    for ((key, label) in outputs.entries) {
-        FilterChip(
-            selected = outkey == key,
-            onClick = { model.setoutput(key) },
-            label = { Text(label) }
+    for (entry in outputs.entries) {
+    FilterChip(
+        selected = outkey == entry.key,
+        onClick = { model.setoutput(entry.key) },
+        label = { Text(entry.value) }
         )
     }
 }
