@@ -33,7 +33,7 @@ class mainmodel(private val app: Application) : AndroidViewModel(app) {
     val source = _source.asStateFlow()
 
     private val _outputs = MutableStateFlow(audioplayer.outputs(app))
-    val outputs = _outputs.asStateFlow()
+    val data: List<String> = someFunction()
 
     private val _outkey = MutableStateFlow(prefs.getString("out_key", "").orEmpty())
     val outkey = _outkey.asStateFlow()
